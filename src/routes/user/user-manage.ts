@@ -46,7 +46,6 @@ export const userAdd: RequestHandler<
   }
 > = async (req, res) => {
   const { body } = req;
-  console.log('body', body);
   const {
     email,
     password,
