@@ -10,6 +10,8 @@ const BUSINESS_QUERY = gql`
       code
       owner
       gender
+      phone
+      phone2
       loans {
         title
         contractDate:contract_date
