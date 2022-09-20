@@ -4,6 +4,7 @@ coverage
 private.pem
 node_modules
 data
+.yarn
 yarn-error.log
 package-lock.json
 
