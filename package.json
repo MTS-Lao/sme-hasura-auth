@@ -81,9 +81,12 @@
     "qrcode": "1.4.4",
     "random-number-csprng": "^1.0.2",
     "sharp": "^0.30.7",
+    "subscriptions-transport-ws": "^0.11.0",
     "twilio": "^3.67.1",
     "url-join": "^4.0.1",
-    "uuid": "7.0.3"
+    "uuid": "7.0.3",
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.0.2",

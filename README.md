@@ -121,5 +121,9 @@ const dbConfig = {
     //   // ca: process.env.CACERT,
     // }
   };
+
+  # pm2 start production
+  
+  pm2 start npm --name "sme-accounting-auth" -- start
   
   ```
