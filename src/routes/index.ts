@@ -13,6 +13,7 @@ import { uploadRouter } from './upload';
 import { businessRouter } from './business';
 import env from './env';
 import { verifyRouter } from './verify';
+import { loggingRouter } from './logging';
 
 const router = express.Router();
 router.use(nocache());
@@ -45,6 +46,7 @@ router.use(tokenRouter);
 router.use(verifyRouter);
 router.use(uploadRouter);
 router.use(businessRouter);
+router.use(loggingRouter);
 
 // admin
 env(router);
