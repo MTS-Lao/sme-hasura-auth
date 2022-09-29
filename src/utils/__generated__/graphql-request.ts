@@ -6428,6 +6428,7 @@ export type Loan_Disbursed = {
   created_at: Scalars['timestamptz'];
   fee: Scalars['numeric'];
   id: Scalars['uuid'];
+  is_submit?: Maybe<Scalars['Boolean']>;
   /** An object relationship */
   loan: Loan;
   loan_id: Scalars['uuid'];
@@ -6515,6 +6516,7 @@ export type Loan_Disbursed_Bool_Exp = {
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   fee?: InputMaybe<Numeric_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  is_submit?: InputMaybe<Boolean_Comparison_Exp>;
   loan?: InputMaybe<Loan_Bool_Exp>;
   loan_id?: InputMaybe<Uuid_Comparison_Exp>;
   note?: InputMaybe<String_Comparison_Exp>;
@@ -6545,6 +6547,7 @@ export type Loan_Disbursed_Insert_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   fee?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['uuid']>;
+  is_submit?: InputMaybe<Scalars['Boolean']>;
   loan?: InputMaybe<Loan_Obj_Rel_Insert_Input>;
   loan_id?: InputMaybe<Scalars['uuid']>;
   note?: InputMaybe<Scalars['String']>;
@@ -6645,6 +6648,7 @@ export type Loan_Disbursed_Order_By = {
   created_at?: InputMaybe<Order_By>;
   fee?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  is_submit?: InputMaybe<Order_By>;
   loan?: InputMaybe<Loan_Order_By>;
   loan_id?: InputMaybe<Order_By>;
   note?: InputMaybe<Order_By>;
@@ -6674,6 +6678,8 @@ export enum Loan_Disbursed_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  IsSubmit = 'is_submit',
+  /** column name */
   LoanId = 'loan_id',
   /** column name */
   Note = 'note',
@@ -6698,6 +6704,7 @@ export type Loan_Disbursed_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   fee?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['uuid']>;
+  is_submit?: InputMaybe<Scalars['Boolean']>;
   loan_id?: InputMaybe<Scalars['uuid']>;
   note?: InputMaybe<Scalars['String']>;
   on_date?: InputMaybe<Scalars['date']>;
@@ -6772,6 +6779,8 @@ export enum Loan_Disbursed_Update_Column {
   Fee = 'fee',
   /** column name */
   Id = 'id',
+  /** column name */
+  IsSubmit = 'is_submit',
   /** column name */
   LoanId = 'loan_id',
   /** column name */
@@ -7362,6 +7371,7 @@ export type Loan_Repayment = {
   fee?: Maybe<Scalars['numeric']>;
   id: Scalars['uuid'];
   interest: Scalars['numeric'];
+  is_submit?: Maybe<Scalars['Boolean']>;
   /** An object relationship */
   loan: Loan;
   loan_id: Scalars['uuid'];
@@ -7451,6 +7461,7 @@ export type Loan_Repayment_Bool_Exp = {
   fee?: InputMaybe<Numeric_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   interest?: InputMaybe<Numeric_Comparison_Exp>;
+  is_submit?: InputMaybe<Boolean_Comparison_Exp>;
   loan?: InputMaybe<Loan_Bool_Exp>;
   loan_id?: InputMaybe<Uuid_Comparison_Exp>;
   note?: InputMaybe<String_Comparison_Exp>;
@@ -7482,6 +7493,7 @@ export type Loan_Repayment_Insert_Input = {
   fee?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['uuid']>;
   interest?: InputMaybe<Scalars['numeric']>;
+  is_submit?: InputMaybe<Scalars['Boolean']>;
   loan?: InputMaybe<Loan_Obj_Rel_Insert_Input>;
   loan_id?: InputMaybe<Scalars['uuid']>;
   note?: InputMaybe<Scalars['String']>;
@@ -7582,6 +7594,7 @@ export type Loan_Repayment_Order_By = {
   fee?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   interest?: InputMaybe<Order_By>;
+  is_submit?: InputMaybe<Order_By>;
   loan?: InputMaybe<Loan_Order_By>;
   loan_id?: InputMaybe<Order_By>;
   note?: InputMaybe<Order_By>;
@@ -7612,6 +7625,8 @@ export enum Loan_Repayment_Select_Column {
   /** column name */
   Interest = 'interest',
   /** column name */
+  IsSubmit = 'is_submit',
+  /** column name */
   LoanId = 'loan_id',
   /** column name */
   Note = 'note',
@@ -7635,6 +7650,7 @@ export type Loan_Repayment_Set_Input = {
   fee?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['uuid']>;
   interest?: InputMaybe<Scalars['numeric']>;
+  is_submit?: InputMaybe<Scalars['Boolean']>;
   loan_id?: InputMaybe<Scalars['uuid']>;
   note?: InputMaybe<Scalars['String']>;
   on_date?: InputMaybe<Scalars['date']>;
@@ -7718,6 +7734,8 @@ export enum Loan_Repayment_Update_Column {
   Id = 'id',
   /** column name */
   Interest = 'interest',
+  /** column name */
+  IsSubmit = 'is_submit',
   /** column name */
   LoanId = 'loan_id',
   /** column name */

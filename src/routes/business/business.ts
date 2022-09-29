@@ -27,6 +27,12 @@ const BUSINESS_QUERY = gql`
             logo
           }
         }
+        loanStatus: loan_status {
+          id
+          lo
+          en
+          active
+        }
       }
       busines_type {
         lo
