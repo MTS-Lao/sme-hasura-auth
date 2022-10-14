@@ -127,3 +127,7 @@ const dbConfig = {
   pm2 start npm --name "sme-accounting-auth" -- start
   
   ```
+
+  ## image 
+
+  http://localhost:4000/images/1.jpeg
