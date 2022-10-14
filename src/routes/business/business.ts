@@ -12,6 +12,7 @@ const BUSINESS_QUERY = gql`
       gender
       phone
       phone2
+      certificateNo: certificate_no
       loans {
         title
         contractDate:contract_date
@@ -19,6 +20,7 @@ const BUSINESS_QUERY = gql`
         amount
         loan_amount_approved
         trash
+        grade
         bank_branch {
           name
           bank {

@@ -2834,10 +2834,17 @@ export type Busines_Sector = {
   busines: Array<Busines>;
   /** An aggregate relationship */
   busines_aggregate: Busines_Aggregate;
+  /** An object relationship */
+  busines_sector?: Maybe<Busines_Sector>;
+  /** An array relationship */
+  busines_sectors: Array<Busines_Sector>;
+  /** An aggregate relationship */
+  busines_sectors_aggregate: Busines_Sector_Aggregate;
   created_at: Scalars['timestamptz'];
   en: Scalars['String'];
   id: Scalars['String'];
   lo: Scalars['String'];
+  parent_id?: Maybe<Scalars['String']>;
   updated_at: Scalars['timestamptz'];
   user_id?: Maybe<Scalars['uuid']>;
 };
@@ -2862,6 +2869,26 @@ export type Busines_SectorBusines_AggregateArgs = {
   where?: InputMaybe<Busines_Bool_Exp>;
 };
 
+
+/** ຂະແໜງການ [ກະ​ສິ​ກຳ​, ການ​ຄ້າ, ບໍ​ລິ​ການ, ຫັດ​ຖະ​ກຳ, ອຸດ​​ສາ​ຫະ​ກຳ] */
+export type Busines_SectorBusines_SectorsArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Sector_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Sector_Order_By>>;
+  where?: InputMaybe<Busines_Sector_Bool_Exp>;
+};
+
+
+/** ຂະແໜງການ [ກະ​ສິ​ກຳ​, ການ​ຄ້າ, ບໍ​ລິ​ການ, ຫັດ​ຖະ​ກຳ, ອຸດ​​ສາ​ຫະ​ກຳ] */
+export type Busines_SectorBusines_Sectors_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Busines_Sector_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Busines_Sector_Order_By>>;
+  where?: InputMaybe<Busines_Sector_Bool_Exp>;
+};
+
 /** aggregated selection of "busines_sector" */
 export type Busines_Sector_Aggregate = {
   __typename?: 'busines_sector_aggregate';
@@ -2884,6 +2911,20 @@ export type Busines_Sector_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "busines_sector" */
+export type Busines_Sector_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Busines_Sector_Max_Order_By>;
+  min?: InputMaybe<Busines_Sector_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "busines_sector" */
+export type Busines_Sector_Arr_Rel_Insert_Input = {
+  data: Array<Busines_Sector_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Busines_Sector_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "busines_sector". All fields are combined with a logical 'AND'. */
 export type Busines_Sector_Bool_Exp = {
   _and?: InputMaybe<Array<Busines_Sector_Bool_Exp>>;
@@ -2891,10 +2932,13 @@ export type Busines_Sector_Bool_Exp = {
   _or?: InputMaybe<Array<Busines_Sector_Bool_Exp>>;
   active?: InputMaybe<Boolean_Comparison_Exp>;
   busines?: InputMaybe<Busines_Bool_Exp>;
+  busines_sector?: InputMaybe<Busines_Sector_Bool_Exp>;
+  busines_sectors?: InputMaybe<Busines_Sector_Bool_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   en?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<String_Comparison_Exp>;
   lo?: InputMaybe<String_Comparison_Exp>;
+  parent_id?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   user_id?: InputMaybe<Uuid_Comparison_Exp>;
 };
@@ -2909,10 +2953,13 @@ export enum Busines_Sector_Constraint {
 export type Busines_Sector_Insert_Input = {
   active?: InputMaybe<Scalars['Boolean']>;
   busines?: InputMaybe<Busines_Arr_Rel_Insert_Input>;
+  busines_sector?: InputMaybe<Busines_Sector_Obj_Rel_Insert_Input>;
+  busines_sectors?: InputMaybe<Busines_Sector_Arr_Rel_Insert_Input>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   en?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   lo?: InputMaybe<Scalars['String']>;
+  parent_id?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['uuid']>;
 };
@@ -2924,8 +2971,20 @@ export type Busines_Sector_Max_Fields = {
   en?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   lo?: Maybe<Scalars['String']>;
+  parent_id?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "busines_sector" */
+export type Busines_Sector_Max_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -2935,8 +2994,20 @@ export type Busines_Sector_Min_Fields = {
   en?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   lo?: Maybe<Scalars['String']>;
+  parent_id?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "busines_sector" */
+export type Busines_Sector_Min_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  en?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lo?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "busines_sector" */
@@ -2966,10 +3037,13 @@ export type Busines_Sector_On_Conflict = {
 export type Busines_Sector_Order_By = {
   active?: InputMaybe<Order_By>;
   busines_aggregate?: InputMaybe<Busines_Aggregate_Order_By>;
+  busines_sector?: InputMaybe<Busines_Sector_Order_By>;
+  busines_sectors_aggregate?: InputMaybe<Busines_Sector_Aggregate_Order_By>;
   created_at?: InputMaybe<Order_By>;
   en?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   lo?: InputMaybe<Order_By>;
+  parent_id?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
@@ -2992,6 +3066,8 @@ export enum Busines_Sector_Select_Column {
   /** column name */
   Lo = 'lo',
   /** column name */
+  ParentId = 'parent_id',
+  /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
   UserId = 'user_id'
@@ -3004,6 +3080,7 @@ export type Busines_Sector_Set_Input = {
   en?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   lo?: InputMaybe<Scalars['String']>;
+  parent_id?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['uuid']>;
 };
@@ -3020,6 +3097,8 @@ export enum Busines_Sector_Update_Column {
   Id = 'id',
   /** column name */
   Lo = 'lo',
+  /** column name */
+  ParentId = 'parent_id',
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
@@ -5991,6 +6070,7 @@ export type Loan = {
   id: Scalars['uuid'];
   inital_free_cost?: Maybe<Scalars['date']>;
   interest: Scalars['numeric'];
+  is_covid_affected?: Maybe<Scalars['String']>;
   /** ໄລຍະປອດທຶນ */
   is_free_cost?: Maybe<Scalars['Boolean']>;
   last_free_cost?: Maybe<Scalars['date']>;
@@ -6025,6 +6105,7 @@ export type Loan = {
   remark?: Maybe<Scalars['String']>;
   repayment?: Maybe<Scalars['numeric']>;
   responsible_staff?: Maybe<Scalars['String']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no: Scalars['Int'];
   staff?: Maybe<Scalars['Int']>;
   title: Scalars['String'];
@@ -6135,6 +6216,7 @@ export type Loan_Avg_Fields = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: Maybe<Scalars['Float']>;
   repayment?: Maybe<Scalars['Float']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: Maybe<Scalars['Float']>;
   staff?: Maybe<Scalars['Float']>;
   total_of_collateral?: Maybe<Scalars['Float']>;
@@ -6148,6 +6230,7 @@ export type Loan_Avg_Order_By = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: InputMaybe<Order_By>;
   repayment?: InputMaybe<Order_By>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Order_By>;
   staff?: InputMaybe<Order_By>;
   total_of_collateral?: InputMaybe<Order_By>;
@@ -6179,6 +6262,7 @@ export type Loan_Bool_Exp = {
   id?: InputMaybe<Uuid_Comparison_Exp>;
   inital_free_cost?: InputMaybe<Date_Comparison_Exp>;
   interest?: InputMaybe<Numeric_Comparison_Exp>;
+  is_covid_affected?: InputMaybe<String_Comparison_Exp>;
   is_free_cost?: InputMaybe<Boolean_Comparison_Exp>;
   last_free_cost?: InputMaybe<Date_Comparison_Exp>;
   loan_amount_approved?: InputMaybe<Numeric_Comparison_Exp>;
@@ -6854,6 +6938,7 @@ export type Loan_Inc_Input = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: InputMaybe<Scalars['numeric']>;
   repayment?: InputMaybe<Scalars['numeric']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Scalars['Int']>;
   staff?: InputMaybe<Scalars['Int']>;
   total_of_collateral?: InputMaybe<Scalars['numeric']>;
@@ -6882,6 +6967,7 @@ export type Loan_Insert_Input = {
   id?: InputMaybe<Scalars['uuid']>;
   inital_free_cost?: InputMaybe<Scalars['date']>;
   interest?: InputMaybe<Scalars['numeric']>;
+  is_covid_affected?: InputMaybe<Scalars['String']>;
   /** ໄລຍະປອດທຶນ */
   is_free_cost?: InputMaybe<Scalars['Boolean']>;
   last_free_cost?: InputMaybe<Scalars['date']>;
@@ -6905,6 +6991,7 @@ export type Loan_Insert_Input = {
   remark?: InputMaybe<Scalars['String']>;
   repayment?: InputMaybe<Scalars['numeric']>;
   responsible_staff?: InputMaybe<Scalars['String']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Scalars['Int']>;
   staff?: InputMaybe<Scalars['Int']>;
   title?: InputMaybe<Scalars['String']>;
@@ -6933,6 +7020,7 @@ export type Loan_Max_Fields = {
   id?: Maybe<Scalars['uuid']>;
   inital_free_cost?: Maybe<Scalars['date']>;
   interest?: Maybe<Scalars['numeric']>;
+  is_covid_affected?: Maybe<Scalars['String']>;
   last_free_cost?: Maybe<Scalars['date']>;
   loan_amount_approved?: Maybe<Scalars['numeric']>;
   loan_collateral_id?: Maybe<Scalars['String']>;
@@ -6947,6 +7035,7 @@ export type Loan_Max_Fields = {
   remark?: Maybe<Scalars['String']>;
   repayment?: Maybe<Scalars['numeric']>;
   responsible_staff?: Maybe<Scalars['String']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: Maybe<Scalars['Int']>;
   staff?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['String']>;
@@ -6973,6 +7062,7 @@ export type Loan_Max_Order_By = {
   id?: InputMaybe<Order_By>;
   inital_free_cost?: InputMaybe<Order_By>;
   interest?: InputMaybe<Order_By>;
+  is_covid_affected?: InputMaybe<Order_By>;
   last_free_cost?: InputMaybe<Order_By>;
   loan_amount_approved?: InputMaybe<Order_By>;
   loan_collateral_id?: InputMaybe<Order_By>;
@@ -6987,6 +7077,7 @@ export type Loan_Max_Order_By = {
   remark?: InputMaybe<Order_By>;
   repayment?: InputMaybe<Order_By>;
   responsible_staff?: InputMaybe<Order_By>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Order_By>;
   staff?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
@@ -7014,6 +7105,7 @@ export type Loan_Min_Fields = {
   id?: Maybe<Scalars['uuid']>;
   inital_free_cost?: Maybe<Scalars['date']>;
   interest?: Maybe<Scalars['numeric']>;
+  is_covid_affected?: Maybe<Scalars['String']>;
   last_free_cost?: Maybe<Scalars['date']>;
   loan_amount_approved?: Maybe<Scalars['numeric']>;
   loan_collateral_id?: Maybe<Scalars['String']>;
@@ -7028,6 +7120,7 @@ export type Loan_Min_Fields = {
   remark?: Maybe<Scalars['String']>;
   repayment?: Maybe<Scalars['numeric']>;
   responsible_staff?: Maybe<Scalars['String']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: Maybe<Scalars['Int']>;
   staff?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['String']>;
@@ -7054,6 +7147,7 @@ export type Loan_Min_Order_By = {
   id?: InputMaybe<Order_By>;
   inital_free_cost?: InputMaybe<Order_By>;
   interest?: InputMaybe<Order_By>;
+  is_covid_affected?: InputMaybe<Order_By>;
   last_free_cost?: InputMaybe<Order_By>;
   loan_amount_approved?: InputMaybe<Order_By>;
   loan_collateral_id?: InputMaybe<Order_By>;
@@ -7068,6 +7162,7 @@ export type Loan_Min_Order_By = {
   remark?: InputMaybe<Order_By>;
   repayment?: InputMaybe<Order_By>;
   responsible_staff?: InputMaybe<Order_By>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Order_By>;
   staff?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
@@ -7122,6 +7217,7 @@ export type Loan_Order_By = {
   id?: InputMaybe<Order_By>;
   inital_free_cost?: InputMaybe<Order_By>;
   interest?: InputMaybe<Order_By>;
+  is_covid_affected?: InputMaybe<Order_By>;
   is_free_cost?: InputMaybe<Order_By>;
   last_free_cost?: InputMaybe<Order_By>;
   loan_amount_approved?: InputMaybe<Order_By>;
@@ -7844,6 +7940,8 @@ export enum Loan_Select_Column {
   /** column name */
   Interest = 'interest',
   /** column name */
+  IsCovidAffected = 'is_covid_affected',
+  /** column name */
   IsFreeCost = 'is_free_cost',
   /** column name */
   LastFreeCost = 'last_free_cost',
@@ -7905,6 +8003,7 @@ export type Loan_Set_Input = {
   id?: InputMaybe<Scalars['uuid']>;
   inital_free_cost?: InputMaybe<Scalars['date']>;
   interest?: InputMaybe<Scalars['numeric']>;
+  is_covid_affected?: InputMaybe<Scalars['String']>;
   /** ໄລຍະປອດທຶນ */
   is_free_cost?: InputMaybe<Scalars['Boolean']>;
   last_free_cost?: InputMaybe<Scalars['date']>;
@@ -7921,6 +8020,7 @@ export type Loan_Set_Input = {
   remark?: InputMaybe<Scalars['String']>;
   repayment?: InputMaybe<Scalars['numeric']>;
   responsible_staff?: InputMaybe<Scalars['String']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Scalars['Int']>;
   staff?: InputMaybe<Scalars['Int']>;
   title?: InputMaybe<Scalars['String']>;
@@ -8145,6 +8245,7 @@ export type Loan_Stddev_Fields = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: Maybe<Scalars['Float']>;
   repayment?: Maybe<Scalars['Float']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: Maybe<Scalars['Float']>;
   staff?: Maybe<Scalars['Float']>;
   total_of_collateral?: Maybe<Scalars['Float']>;
@@ -8158,6 +8259,7 @@ export type Loan_Stddev_Order_By = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: InputMaybe<Order_By>;
   repayment?: InputMaybe<Order_By>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Order_By>;
   staff?: InputMaybe<Order_By>;
   total_of_collateral?: InputMaybe<Order_By>;
@@ -8172,6 +8274,7 @@ export type Loan_Stddev_Pop_Fields = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: Maybe<Scalars['Float']>;
   repayment?: Maybe<Scalars['Float']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: Maybe<Scalars['Float']>;
   staff?: Maybe<Scalars['Float']>;
   total_of_collateral?: Maybe<Scalars['Float']>;
@@ -8185,6 +8288,7 @@ export type Loan_Stddev_Pop_Order_By = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: InputMaybe<Order_By>;
   repayment?: InputMaybe<Order_By>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Order_By>;
   staff?: InputMaybe<Order_By>;
   total_of_collateral?: InputMaybe<Order_By>;
@@ -8199,6 +8303,7 @@ export type Loan_Stddev_Samp_Fields = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: Maybe<Scalars['Float']>;
   repayment?: Maybe<Scalars['Float']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: Maybe<Scalars['Float']>;
   staff?: Maybe<Scalars['Float']>;
   total_of_collateral?: Maybe<Scalars['Float']>;
@@ -8212,6 +8317,7 @@ export type Loan_Stddev_Samp_Order_By = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: InputMaybe<Order_By>;
   repayment?: InputMaybe<Order_By>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Order_By>;
   staff?: InputMaybe<Order_By>;
   total_of_collateral?: InputMaybe<Order_By>;
@@ -8226,6 +8332,7 @@ export type Loan_Sum_Fields = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: Maybe<Scalars['numeric']>;
   repayment?: Maybe<Scalars['numeric']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: Maybe<Scalars['Int']>;
   staff?: Maybe<Scalars['Int']>;
   total_of_collateral?: Maybe<Scalars['numeric']>;
@@ -8239,6 +8346,7 @@ export type Loan_Sum_Order_By = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: InputMaybe<Order_By>;
   repayment?: InputMaybe<Order_By>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Order_By>;
   staff?: InputMaybe<Order_By>;
   total_of_collateral?: InputMaybe<Order_By>;
@@ -8489,6 +8597,8 @@ export enum Loan_Update_Column {
   /** column name */
   Interest = 'interest',
   /** column name */
+  IsCovidAffected = 'is_covid_affected',
+  /** column name */
   IsFreeCost = 'is_free_cost',
   /** column name */
   LastFreeCost = 'last_free_cost',
@@ -8547,6 +8657,7 @@ export type Loan_Var_Pop_Fields = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: Maybe<Scalars['Float']>;
   repayment?: Maybe<Scalars['Float']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: Maybe<Scalars['Float']>;
   staff?: Maybe<Scalars['Float']>;
   total_of_collateral?: Maybe<Scalars['Float']>;
@@ -8560,6 +8671,7 @@ export type Loan_Var_Pop_Order_By = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: InputMaybe<Order_By>;
   repayment?: InputMaybe<Order_By>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Order_By>;
   staff?: InputMaybe<Order_By>;
   total_of_collateral?: InputMaybe<Order_By>;
@@ -8574,6 +8686,7 @@ export type Loan_Var_Samp_Fields = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: Maybe<Scalars['Float']>;
   repayment?: Maybe<Scalars['Float']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: Maybe<Scalars['Float']>;
   staff?: Maybe<Scalars['Float']>;
   total_of_collateral?: Maybe<Scalars['Float']>;
@@ -8587,6 +8700,7 @@ export type Loan_Var_Samp_Order_By = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: InputMaybe<Order_By>;
   repayment?: InputMaybe<Order_By>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Order_By>;
   staff?: InputMaybe<Order_By>;
   total_of_collateral?: InputMaybe<Order_By>;
@@ -8601,6 +8715,7 @@ export type Loan_Variance_Fields = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: Maybe<Scalars['Float']>;
   repayment?: Maybe<Scalars['Float']>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: Maybe<Scalars['Float']>;
   staff?: Maybe<Scalars['Float']>;
   total_of_collateral?: Maybe<Scalars['Float']>;
@@ -8614,6 +8729,7 @@ export type Loan_Variance_Order_By = {
   /** ຄ່າ​ທໍາ​ນຽມ​ການ​ກູ້​ຢືມ​ເງິນ​ */
   loan_fees?: InputMaybe<Order_By>;
   repayment?: InputMaybe<Order_By>;
+  /** ້ເລກທີໃບສັນຍາ */
   skip_no?: InputMaybe<Order_By>;
   staff?: InputMaybe<Order_By>;
   total_of_collateral?: InputMaybe<Order_By>;
