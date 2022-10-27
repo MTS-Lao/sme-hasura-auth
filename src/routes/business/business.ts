@@ -13,7 +13,9 @@ const BUSINESS_QUERY = gql`
       phone
       phone2
       certificateNo: certificate_no
-      loans {
+      loans (where: {
+        trash: { _eq: false }
+      }){
         title
         contractDate:contract_date
         contractEnd:contract_end

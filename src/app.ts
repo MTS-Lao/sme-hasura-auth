@@ -17,19 +17,19 @@ if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1);
 }
 
-// static assets folder
-app.use(express.static('uploads'));
-
-
-
 
 
 addOpenApiRoute(app);
+
+
 
 app.use(pino);
 app.use(helmet());
 app.use(json());
 app.use(cors());
+
+// static assets folder
+app.use(express.static('uploads'));
 
 app.use(authMiddleware);
 

@@ -3,18 +3,24 @@ import { Router } from 'express';
 import { authenticationGate } from '@/middleware/auth';
 
 // const sharp = require('sharp');
-var multer = require('multer');
-const fs = require('fs');
+import multer from 'multer'
+
+import fs  from 'fs';
+import { generateId } from '@/utils/randomUtils';
 
 const router = Router();
 
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: function (req: any, file: any, cb: any) {
-    cb(null, 'uploads');
+    // dynamic folder
+    const {  track }  = req.body
+    const path = 'uploads/'+ (track || 'images')
+    fs.mkdirSync(path, { recursive: true })
+    cb(null, path);
   },
   filename: function (req: any, file: any, cb: any) {
-    let typeFile = file.originalname.split('.');
-    cb(null, 'image-' + Date.now() + '.' + typeFile.pop());
+    const typeFile = file.originalname.split('.');
+    cb(null, generateId() + Date.now() + '.' + typeFile.pop());
   },
 });
 
@@ -30,7 +36,7 @@ const fileFilter = (req: any, file: any, cb: any) => {
   }
 };
 
-var uploadImage = multer({
+const uploadImage = multer({
   storage: storage,
   limits: {
     fileSize: 1024 * 1024, // 1MB
@@ -42,7 +48,6 @@ router.post(
   '/upload/image',
   authenticationGate,
   uploadImage.single('image'),
-
   async (req: any, res: any) => {
     // check token here
 
