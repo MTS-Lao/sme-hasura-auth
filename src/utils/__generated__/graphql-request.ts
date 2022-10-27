@@ -6930,6 +6930,167 @@ export type Loan_Disbursed_Variance_Order_By = {
   fee?: InputMaybe<Order_By>;
 };
 
+/** columns and relationships of "loan_file" */
+export type Loan_File = {
+  __typename?: 'loan_file';
+  created_at: Scalars['timestamp'];
+  file_name: Scalars['String'];
+  id: Scalars['uuid'];
+  loan_id: Scalars['uuid'];
+  trash: Scalars['Boolean'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "loan_file" */
+export type Loan_File_Aggregate = {
+  __typename?: 'loan_file_aggregate';
+  aggregate?: Maybe<Loan_File_Aggregate_Fields>;
+  nodes: Array<Loan_File>;
+};
+
+/** aggregate fields of "loan_file" */
+export type Loan_File_Aggregate_Fields = {
+  __typename?: 'loan_file_aggregate_fields';
+  count: Scalars['Int'];
+  max?: Maybe<Loan_File_Max_Fields>;
+  min?: Maybe<Loan_File_Min_Fields>;
+};
+
+
+/** aggregate fields of "loan_file" */
+export type Loan_File_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Loan_File_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "loan_file". All fields are combined with a logical 'AND'. */
+export type Loan_File_Bool_Exp = {
+  _and?: InputMaybe<Array<Loan_File_Bool_Exp>>;
+  _not?: InputMaybe<Loan_File_Bool_Exp>;
+  _or?: InputMaybe<Array<Loan_File_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamp_Comparison_Exp>;
+  file_name?: InputMaybe<String_Comparison_Exp>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  loan_id?: InputMaybe<Uuid_Comparison_Exp>;
+  trash?: InputMaybe<Boolean_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "loan_file" */
+export enum Loan_File_Constraint {
+  /** unique or primary key constraint on columns "id" */
+  LoanFilePkey = 'loan_file_pkey'
+}
+
+/** input type for inserting data into table "loan_file" */
+export type Loan_File_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  file_name?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  loan_id?: InputMaybe<Scalars['uuid']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Loan_File_Max_Fields = {
+  __typename?: 'loan_file_max_fields';
+  created_at?: Maybe<Scalars['timestamp']>;
+  file_name?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  loan_id?: Maybe<Scalars['uuid']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Loan_File_Min_Fields = {
+  __typename?: 'loan_file_min_fields';
+  created_at?: Maybe<Scalars['timestamp']>;
+  file_name?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  loan_id?: Maybe<Scalars['uuid']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "loan_file" */
+export type Loan_File_Mutation_Response = {
+  __typename?: 'loan_file_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Loan_File>;
+};
+
+/** on_conflict condition type for table "loan_file" */
+export type Loan_File_On_Conflict = {
+  constraint: Loan_File_Constraint;
+  update_columns?: Array<Loan_File_Update_Column>;
+  where?: InputMaybe<Loan_File_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "loan_file". */
+export type Loan_File_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  file_name?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  loan_id?: InputMaybe<Order_By>;
+  trash?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: loan_file */
+export type Loan_File_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "loan_file" */
+export enum Loan_File_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  FileName = 'file_name',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  LoanId = 'loan_id',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "loan_file" */
+export type Loan_File_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamp']>;
+  file_name?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['uuid']>;
+  loan_id?: InputMaybe<Scalars['uuid']>;
+  trash?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "loan_file" */
+export enum Loan_File_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  FileName = 'file_name',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  LoanId = 'loan_id',
+  /** column name */
+  Trash = 'trash',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+export type Loan_File_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Loan_File_Set_Input>;
+  where: Loan_File_Bool_Exp;
+};
+
 /** input type for incrementing numeric columns in table "loan" */
 export type Loan_Inc_Input = {
   amount?: InputMaybe<Scalars['numeric']>;
@@ -9699,6 +9860,10 @@ export type Mutation_Root = {
   delete_loan_disbursed?: Maybe<Loan_Disbursed_Mutation_Response>;
   /** delete single row from the table: "loan_disbursed" */
   delete_loan_disbursed_by_pk?: Maybe<Loan_Disbursed>;
+  /** delete data from the table: "loan_file" */
+  delete_loan_file?: Maybe<Loan_File_Mutation_Response>;
+  /** delete single row from the table: "loan_file" */
+  delete_loan_file_by_pk?: Maybe<Loan_File>;
   /** delete data from the table: "loan_option" */
   delete_loan_option?: Maybe<Loan_Option_Mutation_Response>;
   /** delete single row from the table: "loan_option" */
@@ -9841,6 +10006,10 @@ export type Mutation_Root = {
   insert_loan_disbursed?: Maybe<Loan_Disbursed_Mutation_Response>;
   /** insert a single row into the table: "loan_disbursed" */
   insert_loan_disbursed_one?: Maybe<Loan_Disbursed>;
+  /** insert data into the table: "loan_file" */
+  insert_loan_file?: Maybe<Loan_File_Mutation_Response>;
+  /** insert a single row into the table: "loan_file" */
+  insert_loan_file_one?: Maybe<Loan_File>;
   /** insert a single row into the table: "loan" */
   insert_loan_one?: Maybe<Loan>;
   /** insert data into the table: "loan_option" */
@@ -10033,6 +10202,12 @@ export type Mutation_Root = {
   update_loan_disbursed_by_pk?: Maybe<Loan_Disbursed>;
   /** update multiples rows of table: "loan_disbursed" */
   update_loan_disbursed_many?: Maybe<Array<Maybe<Loan_Disbursed_Mutation_Response>>>;
+  /** update data of the table: "loan_file" */
+  update_loan_file?: Maybe<Loan_File_Mutation_Response>;
+  /** update single row of the table: "loan_file" */
+  update_loan_file_by_pk?: Maybe<Loan_File>;
+  /** update multiples rows of table: "loan_file" */
+  update_loan_file_many?: Maybe<Array<Maybe<Loan_File_Mutation_Response>>>;
   /** update multiples rows of table: "loan" */
   update_loan_many?: Maybe<Array<Maybe<Loan_Mutation_Response>>>;
   /** update data of the table: "loan_option" */
@@ -10402,6 +10577,18 @@ export type Mutation_RootDelete_Loan_DisbursedArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Loan_Disbursed_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_FileArgs = {
+  where: Loan_File_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Loan_File_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
@@ -10878,6 +11065,20 @@ export type Mutation_RootInsert_Loan_DisbursedArgs = {
 export type Mutation_RootInsert_Loan_Disbursed_OneArgs = {
   object: Loan_Disbursed_Insert_Input;
   on_conflict?: InputMaybe<Loan_Disbursed_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_FileArgs = {
+  objects: Array<Loan_File_Insert_Input>;
+  on_conflict?: InputMaybe<Loan_File_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Loan_File_OneArgs = {
+  object: Loan_File_Insert_Input;
+  on_conflict?: InputMaybe<Loan_File_On_Conflict>;
 };
 
 
@@ -11573,6 +11774,26 @@ export type Mutation_RootUpdate_Loan_Disbursed_ManyArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Loan_FileArgs = {
+  _set?: InputMaybe<Loan_File_Set_Input>;
+  where: Loan_File_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_File_By_PkArgs = {
+  _set?: InputMaybe<Loan_File_Set_Input>;
+  pk_columns: Loan_File_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Loan_File_ManyArgs = {
+  updates: Array<Loan_File_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_Loan_ManyArgs = {
   updates: Array<Loan_Updates>;
 };
@@ -12197,6 +12418,12 @@ export type Query_Root = {
   loan_disbursed_aggregate: Loan_Disbursed_Aggregate;
   /** fetch data from the table: "loan_disbursed" using primary key columns */
   loan_disbursed_by_pk?: Maybe<Loan_Disbursed>;
+  /** fetch data from the table: "loan_file" */
+  loan_file: Array<Loan_File>;
+  /** fetch aggregated fields from the table: "loan_file" */
+  loan_file_aggregate: Loan_File_Aggregate;
+  /** fetch data from the table: "loan_file" using primary key columns */
+  loan_file_by_pk?: Maybe<Loan_File>;
   /** fetch data from the table: "loan_option" */
   loan_option: Array<Loan_Option>;
   /** fetch aggregated fields from the table: "loan_option" */
@@ -12828,6 +13055,29 @@ export type Query_RootLoan_Disbursed_By_PkArgs = {
 };
 
 
+export type Query_RootLoan_FileArgs = {
+  distinct_on?: InputMaybe<Array<Loan_File_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_File_Order_By>>;
+  where?: InputMaybe<Loan_File_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_File_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_File_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_File_Order_By>>;
+  where?: InputMaybe<Loan_File_Bool_Exp>;
+};
+
+
+export type Query_RootLoan_File_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
 export type Query_RootLoan_OptionArgs = {
   distinct_on?: InputMaybe<Array<Loan_Option_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -13267,6 +13517,12 @@ export type Subscription_Root = {
   loan_disbursed_aggregate: Loan_Disbursed_Aggregate;
   /** fetch data from the table: "loan_disbursed" using primary key columns */
   loan_disbursed_by_pk?: Maybe<Loan_Disbursed>;
+  /** fetch data from the table: "loan_file" */
+  loan_file: Array<Loan_File>;
+  /** fetch aggregated fields from the table: "loan_file" */
+  loan_file_aggregate: Loan_File_Aggregate;
+  /** fetch data from the table: "loan_file" using primary key columns */
+  loan_file_by_pk?: Maybe<Loan_File>;
   /** fetch data from the table: "loan_option" */
   loan_option: Array<Loan_Option>;
   /** fetch aggregated fields from the table: "loan_option" */
@@ -13894,6 +14150,29 @@ export type Subscription_RootLoan_Disbursed_AggregateArgs = {
 
 
 export type Subscription_RootLoan_Disbursed_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootLoan_FileArgs = {
+  distinct_on?: InputMaybe<Array<Loan_File_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_File_Order_By>>;
+  where?: InputMaybe<Loan_File_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_File_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Loan_File_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Loan_File_Order_By>>;
+  where?: InputMaybe<Loan_File_Bool_Exp>;
+};
+
+
+export type Subscription_RootLoan_File_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
