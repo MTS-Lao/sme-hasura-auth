@@ -8,15 +8,18 @@ import { sendError } from '@/errors';
 
 const router = Router();
 
-router.get('/business', authenticationGate, async (_req, res) => {
+router.post('/business', authenticationGate, async (_req, res) => {
   try {
     let whereArg = {};
-    let { where } = _req.query;
+    let { where } = _req.body;
     if (where) {
       if (typeof where == 'string') {
         whereArg = JSON.parse(where);
+      }else{
+        whereArg = where
       }
     }
+    
     const [error, business] = await getBusiness({ where: whereArg });
     if (error) {
       return sendError(res, 'invalid-request');

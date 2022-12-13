@@ -125,6 +125,8 @@ const dbConfig = {
   # pm2 start production
   
   pm2 start npm --name "sme-accounting-auth" -- start
+
+  pm2 start "npm run dev" --name myAppName
   
   ```
 
