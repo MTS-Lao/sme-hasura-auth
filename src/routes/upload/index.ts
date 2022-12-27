@@ -7,6 +7,7 @@ import multer from 'multer'
 
 import fs  from 'fs';
 import { generateId } from '@/utils/randomUtils';
+import { uploadFileRouter } from './upload-file';
 
 const router = Router();
 
@@ -82,6 +83,6 @@ router.post(
     });
   }
 );
-
+router.use(uploadFileRouter)
 const uploadRouter = router;
 export { uploadRouter };
