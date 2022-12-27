@@ -30,6 +30,7 @@ import {
   userResetPassword,
   addUserSchema
 } from './user-manage';
+import { userPasswordChangeHandler, userPasswordChangeSchema } from './password-change';
 
 const router = Router();
 
@@ -161,6 +162,19 @@ router.post(
   bodyValidator(userPasswordrestSchema),
   authenticationGate,
   aw(userResetPassword)
+);
+
+
+/**
+ * for user change new password 
+ * @param {userPasswordChangeSchema} request.body.required
+ * @return {String} OK
+ */
+router.put(
+  '/user/password/change',
+  bodyValidator(userPasswordChangeSchema),
+  authenticationGate,
+  aw(userPasswordChangeHandler)
 );
 
 const userRouter = router;
